@@ -3,4 +3,4 @@
 
 # Things in ./backend that should NEVER be pushed.
 ./backend/package-lock.json
-./backend/node_modules
+./backend/node_modules/
