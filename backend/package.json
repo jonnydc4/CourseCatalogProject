@@ -1,0 +1,15 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "The backend to our web app.",
+  "main": "expressApp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node expressApp.js"
+  },
+  "author": "Jon Carr",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
