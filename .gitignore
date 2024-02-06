@@ -1,1 +1,6 @@
+# General things git should ignore.
 ./idea
+
+# Things in ./backend that should NEVER be pushed.
+./backend/package-lock.json
+./backend/node_modules
