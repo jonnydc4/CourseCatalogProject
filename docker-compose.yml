@@ -1,0 +1,11 @@
+version: '3.8'  # docker-compose version
+
+services:
+  express-app:
+    build: .
+    ports:
+      - "3000:3000"  # Maps the port from the container to your host
+    volumes:
+      - ./backend/src:/usr/src/app/src/ # Bind mount connects the docker container to local src directory.
+
+

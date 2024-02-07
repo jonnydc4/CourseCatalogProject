@@ -2,10 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "The backend to our web app.",
-  "main": "expressApp.js",
+  "main": "src/expressApp.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node expressApp.js"
+    "start": "node src/expressApp.js"
   },
   "author": "Jon Carr",
   "license": "ISC",
