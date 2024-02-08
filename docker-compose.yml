@@ -7,5 +7,5 @@ services:
       - "3000:3000"  # Maps the port from the container to your host
     volumes:
       - ./backend/src:/usr/src/app/src/ # Bind mount connects the docker container to local src directory.
-
+      - ./backend/build:/usr/src/app/build/
 
