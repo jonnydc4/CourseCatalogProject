@@ -1,3 +1,4 @@
+# Node version in use
 FROM node:18
 
 # Create the node container's directory.
