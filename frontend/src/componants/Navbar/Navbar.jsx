@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 import {styled} from '@mui/material/styles';
 import {Tabs, Tab, Box, AppBar, Toolbar, IconButton, Menu, MenuItem} from '@mui/material';
-import uvu_logo from '../icons/UVUMonogramWhite-0007.png';
+import uvu_logo from '../../icons/UVUMonogramWhite-0007.png';
 import TabPanel from './TabPanel';
-import Courses from "../views/Courses";
-import Degrees from "../views/Degrees";
+import Courses from "../NavbarTabs/Courses";
+import Degrees from "../NavbarTabs/Degrees";
 import {AccountCircle} from "@mui/icons-material";
 
 /*
 Documentation:
-Navbar2 does not utilize a react router at all. It shows and hides content based on the tab you are on.
+Navbar does not utilize a react router at all. It shows and hides content based on the tab you are on.
 It does this by using the 'activeTabIndex' to keep track of which tab has been selected. The 'TabPanel' components
 then use 'activeTabIndex' to determine if they should be hidden or not by comparing the 'activeTabIndex' to their
 own index.
@@ -25,7 +25,7 @@ const StyledTab = styled(Tab)({
     }
 })
 
-function Navbar2() {
+function Navbar() {
 
     const [activeTabIndex, setActiveTabIndex] = useState(0);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -117,4 +117,4 @@ function Navbar2() {
     );
 }
 
-export default Navbar2
+export default Navbar

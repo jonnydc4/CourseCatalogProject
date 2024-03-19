@@ -2,7 +2,7 @@ import {Box} from "@mui/material";
 
 /*
 Documentation:
-TabPanel is used by Navbar2 as a way to show and hide content based on what tab the user has selected on the navbar.
+TabPanel is used by Navbar as a way to show and hide content based on what tab the user has selected on the navbar.
 If the TabPanel index does not match that of the activeTabIndex(value) it should hide itself. If they do match up we want
 the TabPanel to display its children components.
  */
