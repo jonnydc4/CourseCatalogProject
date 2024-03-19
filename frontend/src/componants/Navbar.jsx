@@ -3,6 +3,17 @@ import { AppBar, Toolbar, IconButton, Button, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import uvu_logo from '../icons/UVUMonogramWhite-0007.png';
 
+/*
+Documentation:
+This navbar is the first we have made.
+The "const pages" is what sections are on the navbar.
+The navbar will map automatically through pages to add a section,
+however the functionality of that added section needs to be added
+MANUALLY in the "handleNavigation()" function and in our app's main router.
+This goes for any and all changes made to "pages"
+
+In this design each navbar section has its own route on the router.
+ */
 
 const pages = ['Courses', 'Degrees', 'Games', 'About'];
 
