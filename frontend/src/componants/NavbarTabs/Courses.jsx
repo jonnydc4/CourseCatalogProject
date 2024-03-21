@@ -6,8 +6,6 @@ function Courses() {
     return (
         <div>
             <Box>
-                <Typography variant="h4">Courses Page Content Here</Typography>
-                {/* Rest of your content */}
                 <CourseFilter/>
             </Box>
         </div>
