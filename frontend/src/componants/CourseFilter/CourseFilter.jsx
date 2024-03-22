@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
     Autocomplete,
     TextField,
@@ -9,10 +9,10 @@ import {
     FormControl,
     InputLabel,
     MenuItem,
-    Container, Grid, Box, Typography
+    Container, Grid, Box, Typography, Stack, Button, FormHelperText, FormLabel
 } from '@mui/material';
 import ActiveFiltersList from "./ActiveFiltersList";
-import SelectBar from "./SelectBar";
+
 
 const CourseFilter = () => {
     const [college, setCollege] = useState(null);
@@ -31,68 +31,94 @@ const CourseFilter = () => {
     const locationOptions = ['Location 1', 'Location 2', 'Location 3'];
 
     const handleAvailabilityChange = (event) => {
-        setAvailability({ ...availability, [event.target.name]: event.target.checked });
+        setAvailability({...availability, [event.target.name]: event.target.checked});
     };
 
     return (
-        <div>
+        <Stack direction="row">
+            <Container maxWidth="sm" xs={12}>
+                <Typography variant="h3" textAlign='center'>
+                    Active Filters
+                </Typography>
+                <Box
+                    gap={4}
+                    p={2}
+                    sx={{border: '2px solid grey'}}
+                >
+                    <ActiveFiltersList/>
+                </Box>
+            </Container>
             <Container maxWidth="lg" xs={12}>
-                <Grid item xs={12} textAlign="center">
-                    <SelectBar/>
-                </Grid>
+                {/*<Grid item xs={12} textAlign="center">*/}
+                {/*    <ActiveFiltersList/>*/}
+                {/*</Grid>*/}
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                        {/*<Autocomplete*/}
-                        {/*    options={collegeOptions}*/}
-                        {/*    value={college}*/}
-                        {/*    onChange={(event, newValue) => {*/}
-                        {/*        setCollege(newValue);*/}
-                        {/*    }}*/}
-                        {/*    renderInput={(params) => <TextField {...params} label="College" />}*/}
-                        {/*/>*/}
-                        {/*<ActiveFiltersList/>*/}
+                        <Autocomplete
+                            options={collegeOptions}
+                            value={college}
+                            onChange={(event, newValue) => {
+                                setCollege(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} label="College"/>}
+                        />
                     </Grid>
-                    <Grid item xs={12} textAlign="center">
-                    {/*  Add more components  */}
+                    <Grid item xs={12}>
+                        <Autocomplete
+                            options={departmentOptions}
+                            value={department}
+                            onChange={(event, newValue) => {
+                                setDepartment(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} label="Department"/>}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Autocomplete
+                            options={locationOptions}
+                            value={location}
+                            onChange={(event, newValue) => {
+                                setLocation(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} label="Location"/>}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <FormGroup>
+                            <FormControlLabel
+                                control={<Switch checked={generalEducation}
+                                                 onChange={(e) => setGeneralEducation(e.target.checked)}/>}
+                                label="General Education"
+                            />
+                        </FormGroup>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography varient="h5">
+                            Availability:
+                        </Typography>
+                        <FormGroup row="true">
+                            <FormControlLabel
+                                control={<Checkbox checked={availability.fall} onChange={handleAvailabilityChange}
+                                                   name="fall"/>} label="Fall"/>
+                            <FormControlLabel
+                                control={<Checkbox checked={availability.spring} onChange={handleAvailabilityChange}
+                                                   name="spring"/>} label="Spring"/>
+                            <FormControlLabel
+                                control={<Checkbox checked={availability.summer} onChange={handleAvailabilityChange}
+                                                   name="summer"/>} label="Summer"/>
+                        </FormGroup>
                     </Grid>
 
+                    <Grid item xs={12}>
+                        <Button variant="outlined">
+                            Add Filters
+                        </Button>
+                    </Grid>
                 </Grid>
             </Container>
+        </Stack>
 
-            {/*<Autocomplete*/}
-            {/*    options={departmentOptions}*/}
-            {/*    value={department}*/}
-            {/*    onChange={(event, newValue) => {*/}
-            {/*        setDepartment(newValue);*/}
-            {/*    }}*/}
-            {/*    renderInput={(params) => <TextField {...params} label="Department" />}*/}
-            {/*/>*/}
-            {/*<FormGroup>*/}
-            {/*    <FormControlLabel*/}
-            {/*        control={<Switch checked={generalEducation} onChange={(e) => setGeneralEducation(e.target.checked)} />}*/}
-            {/*        label="General Education"*/}
-            {/*    />*/}
-            {/*</FormGroup>*/}
-            {/*<FormGroup>*/}
-            {/*    <FormControlLabel control={<Checkbox checked={availability.fall} onChange={handleAvailabilityChange} name="fall" />} label="Fall" />*/}
-            {/*    <FormControlLabel control={<Checkbox checked={availability.spring} onChange={handleAvailabilityChange} name="spring" />} label="Spring" />*/}
-            {/*    <FormControlLabel control={<Checkbox checked={availability.summer} onChange={handleAvailabilityChange} name="summer" />} label="Summer" />*/}
-            {/*</FormGroup>*/}
-            {/*<FormControl fullWidth>*/}
-            {/*    <InputLabel>Location</InputLabel>*/}
-            {/*    <Select*/}
-            {/*        value={location}*/}
-            {/*        label="Location"*/}
-            {/*        onChange={(event) => setLocation(event.target.value)}*/}
-            {/*    >*/}
-            {/*        {locationOptions.map((option) => (*/}
-            {/*            <MenuItem key={option} value={option}>*/}
-            {/*                {option}*/}
-            {/*            </MenuItem>*/}
-            {/*        ))}*/}
-            {/*    </Select>*/}
-            {/*</FormControl>*/}
-        </div>
+
     );
 };
 
