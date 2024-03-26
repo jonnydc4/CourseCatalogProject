@@ -44,7 +44,7 @@ function Navbar() {
 
     return (
         <div>
-            <AppBar sx={{position: 'static', backgroundColor: 'green'}}>
+            <AppBar sx={{position: 'static', backgroundColor: "primary"}}>
                 <Toolbar>
                     <Box>
                         <img src={uvu_logo} alt={uvu_logo} style={{height: '80px'}}/>

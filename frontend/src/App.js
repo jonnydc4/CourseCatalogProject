@@ -1,10 +1,18 @@
 import Navbar from "./componants/Navbar/Navbar";
 import Home from "./componants/NavbarTabs/Home";
-import {Box} from "@mui/material";
+import {Box, createTheme, ThemeProvider} from "@mui/material";
 import ProjectNavigator from "./componants/DevLandingPage/ProjectNavigator";
 import {useRoutes} from "react-router-dom";
 
 function App() {
+    const theme = createTheme({
+        palette: {
+            primary: {
+                main: '#228B22'
+            }
+        }
+    });
+
     const routesArray = [
         {
             path: "*",
@@ -24,9 +32,11 @@ function App() {
     let routesElement = useRoutes(routesArray);
 
     return (
-        <Box>
-            {routesElement}
-        </Box>
+        <ThemeProvider theme={theme}>
+            <Box>
+                {routesElement}
+            </Box>
+        </ThemeProvider>
     );
 }
 
