@@ -1,20 +1,19 @@
-import {useState} from "react";
 import {Stack} from "@mui/material";
 import FilterTag from "./FilterTag";
 
 export default function ActiveFiltersList ({activeFilters, setActiveFilters}) {
 
-    const handleDelete = (id) => {
-        setActiveFilters(activeFilters.filter(filter => filter.id !== id));
+    const handleDelete = (filterNameToDelete) => {
+        setActiveFilters(activeFilters.filter(filterName => filterName !== filterNameToDelete));
     };
 
     return (
         <Stack direction="row" spacing={1}>
-            {activeFilters.map((filter) => (
+            {activeFilters.map((filterName) => (
                 <FilterTag
-                    key={filter.id}
-                    label={filter.label}
-                    onDelete={() => handleDelete(filter.id)}
+                    key={filterName}
+                    label={filterName}
+                    onDelete={() => handleDelete(filterName)}
                 />
             ))}
         </Stack>

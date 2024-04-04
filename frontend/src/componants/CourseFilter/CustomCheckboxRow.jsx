@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography";
 import React, {useState} from "react";
 import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
 
-const CustomCheckboxRow = ({title, checkBoxNames}) => {
+const CustomCheckboxRow = ({title, checkBoxNames, activeFilterArray, setActiveFilterArray}) => {
     const initializeCheckboxToggleObject = (checkBoxNames) => {
         const checkBoxToggleObject = {}
         checkBoxNames.forEach((name) => {
@@ -14,6 +14,12 @@ const CustomCheckboxRow = ({title, checkBoxNames}) => {
     const [toggleObject, setToggleObject] = useState(initializeCheckboxToggleObject(checkBoxNames));
 
     const handleToggleChange = (event) => {
+        if(event.target.checked) {
+            setActiveFilterArray([...activeFilterArray, event.target.name])
+        } else {
+            setActiveFilterArray(activeFilterArray.filter((filterName) => filterName !== event.target.name))
+        }
+
         setToggleObject({...toggleObject, [event.target.name]: event.target.checked});
     };
 
