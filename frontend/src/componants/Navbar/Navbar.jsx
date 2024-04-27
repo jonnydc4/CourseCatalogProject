@@ -16,7 +16,7 @@ own index.
 
 It also uses a icon button to anchor a account menu when clicked. That anchor is the 'anchorE1'.
 When the account icon is clicked the menu opens up anchored over the account icon.
- */
+*/
 
 const StyledTab = styled(Tab)({
     color: 'white',
