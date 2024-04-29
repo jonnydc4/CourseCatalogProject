@@ -1,9 +1,9 @@
 import {Autocomplete, TextField} from "@mui/material";
-import React, {useState} from "react";
+import React from "react";
 
 const DynamicFilterAutocomplete = ({label, optionList, activeFilters, setActiveFilters}) => {
 
-    const [selectedFilters, setSelectedFilters] = useState(activeFilters[label].filters)
+    // const [selectedFilters, setSelectedFilters] = useState(activeFilters[label].filters)
 
     return (
         <Autocomplete

@@ -6,10 +6,7 @@ import {
     FormControlLabel,
     Checkbox,
     Switch,
-    FormControl,
-    InputLabel,
-    MenuItem,
-    Container, Grid, Box, Typography, Stack, Button, FormHelperText, FormLabel
+    Container, Grid, Box, Typography, Stack, Button,
 } from '@mui/material';
 import ActiveFiltersList from "./ActiveFiltersList";
 

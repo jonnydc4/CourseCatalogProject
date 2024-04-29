@@ -1,75 +1,73 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
     Container, Grid, Stack, Button
 } from "@mui/material";
 import DropdownComponent from "./DropDownComponent";
 import DynamicFilterAutocomplete from "./DynamicFilterAutocomplete";
 
-const CourseFilter = () => {
-    const [toggles, setToggles] = useState(false);
-    const [filters, setFilters] = useState([]);
+const CourseFilter = ({ filterSettings, onAddFilters }) => {
     const fieldsForFilters = [
-        "College",
-        "Department",
-        "Degree",
-        "Elective",
-        "General education",
-        "Distribution",
-        "Level",
-        "Location",
-        "Mode",
-        "Credit",
-        "Skill",
-        "Job",
-        "Outcome",
-        "Favorites"
-    ]
+        "college",
+        "department",
+        "degree",
+        "elective",
+        "general education",
+        "distribution",
+        "level",
+        "location",
+        "mode",
+        "credit",
+        "skill",
+        "job",
+        "outcome",
+        "favorites"
+    ];
 
-    // Example options for colleges, departments, and locations. These can be fetched from an API.
     const filterOptions = {
-        "College": ["College of Science", "College of Humanities & Social Sciences", "College of Health & Public Service"],
-        "Department": [],
-        "Degree": [],
-        "Elective": [],
-        "General education": [],
-        "Distribution": [],
-        "Level": [],
-        "Location": [],
-        "Mode": [],
-        "Credit": [],
-        "Skill": [],
-        "Job": [],
-        "Outcome": [],
-        "Favorites": []
-    }
-
+        "college": ["College of Science", "College of Humanities and Social Sciences", "College of Health and Public Service"],
+        "department": [],
+        "degree": [],
+        "elective": [],
+        "general education": [],
+        "distribution": [],
+        "level": [],
+        "location": [],
+        "mode": [],
+        "credit": [],
+        "skill": [],
+        "job": [],
+        "outcome": [],
+        "favorites": []
+    };
 
     const initializeFilterObject = () => {
-        let newFilterObject = {}
+        if (Object.keys(filterSettings).length === 0) {
+            let newFilterObject = {};
+            fieldsForFilters.forEach(fieldName => {
+                newFilterObject[fieldName] = {
+                    isActive: false,
+                    filters: []
+                };
+            });
+            return newFilterObject;
+        } else {return filterSettings}
+    };
 
-        fieldsForFilters.forEach((fieldName) => {
-            newFilterObject[fieldName] = {
-                isActive: false,
-                filters: []
-            }
-        })
-
-        return newFilterObject
-    }
-
-    const [filterObject, setFilterObject] = useState(initializeFilterObject)
+    const [filterObject, setFilterObject] = useState(initializeFilterObject);
 
     const handleFilterAdd = () => {
-        console.log(filterObject)
-    }
+        // Call the passed in onAddFilters function with the current state of filterObject
+        onAddFilters(filterObject);
+    };
 
     return (
         <Stack direction="row">
-            <Container maxWidth="lg" xs={12}>
+            <Container maxWidth="lg">
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         {fieldsForFilters.map((fieldName) => (
                             <DropdownComponent
+                                key={fieldName}  // Make sure to include keys for list items
                                 label={fieldName}
                                 childComponent={
                                     <DynamicFilterAutocomplete
@@ -83,7 +81,6 @@ const CourseFilter = () => {
                                 setActiveFilters={setFilterObject}
                             />
                         ))}
-
                     </Grid>
                     <Grid item xs={12}>
                         <Button
@@ -96,8 +93,6 @@ const CourseFilter = () => {
                 </Grid>
             </Container>
         </Stack>
-
-
     );
 };
 
