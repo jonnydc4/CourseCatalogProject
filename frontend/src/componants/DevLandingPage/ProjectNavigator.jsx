@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Container, Stack, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 // Mock data for the projects
 const projects = [
@@ -9,11 +10,11 @@ const projects = [
 ];
 
 const ProjectNavigator = () => {
-    // Function to handle navigation
-    // This can be replaced with your actual navigation logic,
-    // e.g., using useHistory from react-router-dom
+    const navigate = useNavigate(); // Initialize useNavigate
+
+    // Function to handle navigation using useNavigate
     const navigateToProject = (url) => {
-        window.location.href = url; // For demonstration purposes
+        navigate(url); // Use navigate instead of window.location.href
     };
 
     return (

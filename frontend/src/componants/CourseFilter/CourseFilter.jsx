@@ -25,7 +25,7 @@ const CourseFilter = ({ filterSettings, onAddFilters }) => {
 
     const filterOptions = {
         "college": ["College of Science", "College of Humanities and Social Sciences", "College of Health and Public Service"],
-        "department": [],
+        "department": ["Computer Science", "Communication"],
         "degree": [],
         "elective": [],
         "general education": [],
